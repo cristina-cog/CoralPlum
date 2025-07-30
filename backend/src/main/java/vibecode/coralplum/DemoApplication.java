@@ -1,4 +1,4 @@
-package com.example.demo;
+package vibecode.coralplum;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

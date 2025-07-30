@@ -1,0 +1,438 @@
+# 🌱 Digital Carbon Footprint Tracker - .gitignore
+
+# ===================================
+# Java / Maven (Backend)
+# ===================================
+
+# Compiled class file
+*.class
+
+# Log file
+*.log
+
+# BlueJ files
+*.ctxt
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# Virtual machine crash logs
+hs_err_pid*
+replay_pid*
+
+# Maven
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+.mvn/wrapper/maven-wrapper.jar
+
+# ===================================
+# Node.js / React (Frontend)
+# ===================================
+
+# Dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.pnpm-debug.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directory used by tools like istanbul
+coverage/
+*.lcov
+
+# nyc test coverage
+.nyc_output
+
+# Grunt intermediate storage
+.grunt
+
+# Bower dependency directory
+bower_components
+
+# node-waf configuration
+.lock-wscript
+
+# Compiled binary addons
+build/Release
+
+# Dependency directories
+jspm_packages/
+
+# TypeScript cache
+*.tsbuildinfo
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Optional stylelint cache
+.stylelintcache
+
+# Microbundle cache
+.rpt2_cache/
+.rts2_cache_cjs/
+.rts2_cache_es/
+.rts2_cache_umd/
+
+# Optional REPL history
+.node_repl_history
+
+# Output of 'npm pack'
+*.tgz
+
+# Yarn Integrity file
+.yarn-integrity
+
+# React build output
+build/
+dist/
+
+# ===================================
+# Environment & Configuration
+# ===================================
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env.development
+.env.production
+.env.staging
+
+# Application configuration
+application-local.properties
+application-dev.properties
+application-prod.properties
+
+# ===================================
+# Database
+# ===================================
+
+# H2 Database files
+*.h2.db
+*.trace.db
+*.lock.db
+
+# PostgreSQL dump files
+*.sql
+*.dump
+
+# SQLite
+*.sqlite
+*.sqlite3
+*.db
+
+# ===================================
+# IDE & Editor
+# ===================================
+
+# IntelliJ IDEA
+.idea/
+*.iws
+*.iml
+*.ipr
+out/
+
+# VS Code
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+# Eclipse
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+bin/
+!**/src/main/**/bin/
+!**/src/test/**/bin/
+
+# NetBeans
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Vim
+*.swp
+*.swo
+*~
+
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+.\#*
+
+# ===================================
+# Operating System
+# ===================================
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.tmp
+*.temp
+*.lnk
+Desktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+*.exe
+
+# Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+# ===================================
+# Cloud & Deployment
+# ===================================
+
+# Docker
+Dockerfile.prod
+docker-compose.override.yml
+.dockerignore
+
+# Kubernetes
+*.yaml.backup
+*.yml.backup
+
+# Terraform
+*.tfstate
+*.tfstate.*
+.terraform/
+.terraform.lock.hcl
+
+# AWS
+.aws/
+
+# ===================================
+# Testing & Coverage
+# ===================================
+
+# JUnit
+junit.xml
+TEST-*.xml
+
+# Jest
+coverage/
+.nyc_output/
+
+# Cypress
+cypress/videos/
+cypress/screenshots/
+
+# ===================================
+# Build Tools & CI/CD
+# ===================================
+
+# Gradle
+.gradle
+**/build/
+!src/**/build/
+gradle-app.setting
+!gradle-wrapper.jar
+!gradle-wrapper.properties
+
+# Jenkins
+.jenkins/
+
+# GitHub Actions
+.github/workflows/*.yml.backup
+
+# ===================================
+# Logs & Monitoring
+# ===================================
+
+# Application logs
+logs/
+*.log
+*.log.*
+log/
+
+# NPM logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Spring Boot logs
+spring.log
+application.log
+
+# ===================================
+# Security & Secrets
+# ===================================
+
+# API Keys and secrets
+secrets/
+*.pem
+*.key
+*.cert
+*.crt
+*.p12
+*.pfx
+keystore.*
+
+# OAuth tokens
+.oauth2/
+
+# ===================================
+# Performance & Profiling
+# ===================================
+
+# Java profiling
+*.hprof
+*.jfr
+
+# Node.js profiling
+*.cpuprofile
+*.heapsnapshot
+
+# ===================================
+# Cache & Temporary Files
+# ===================================
+
+# General cache
+.cache/
+*.cache
+
+# Webpack cache
+.webpack/
+
+# Parcel cache
+.parcel-cache/
+
+# Next.js cache (if used)
+.next/
+
+# Nuxt.js cache (if used)
+.nuxt/
+
+# ===================================
+# Documentation
+# ===================================
+
+# Generated documentation
+docs/build/
+site/
+
+# ===================================
+# Package Managers
+# ===================================
+
+# Yarn
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+
+# pnpm
+.pnpm-store/
+
+# ===================================
+# Miscellaneous
+# ===================================
+
+# Backup files
+*.bak
+*.backup
+*.old
+*.orig
+
+# Compressed files
+*.7z
+*.dmg
+*.gz
+*.iso
+*.rar
+*.tar
+*.zip
+
+# JetBrains IDEs
+cmake-build-*/
+
+# Metals (Scala)
+.metals/
+.bloop/
+.ammonite/
+metals.sbt
+
+# Custom application files
+/uploads/
+/temp/
+/tmp/
+
+# Local configuration overrides
+local.properties
+.env.local.example

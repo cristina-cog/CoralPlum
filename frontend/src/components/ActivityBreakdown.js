@@ -1,6 +1,7 @@
 import React from 'react';
 
-const ActivityBreakdown = ({ carbonBreakdown }) => {
+const TREE_EQUIVALENT_FACTOR = 21;
+const ActivityBreakdown = ({ carbonBreakdown, unit }) => {
   const formatActivityType = (type) => {
     switch(type) {
       case 'CLOUD_USAGE': return '☁️ Cloud Usage';
@@ -46,7 +47,9 @@ const ActivityBreakdown = ({ carbonBreakdown }) => {
       <div className="breakdown-list">
         {sortedActivities.map(([activityType, carbonValue]) => {
           const percentage = totalCarbon > 0 ? (carbonValue / totalCarbon * 100) : 0;
-          
+          const displayValue = unit === 'kg'
+            ? carbonValue.toFixed(4) + ' kg CO₂'
+            : (carbonValue / TREE_EQUIVALENT_FACTOR).toFixed(2) + ' Trees';
           return (
             <div key={activityType} className="breakdown-item">
               <div className="activity-header">
@@ -54,21 +57,18 @@ const ActivityBreakdown = ({ carbonBreakdown }) => {
                   {formatActivityType(activityType)}
                 </span>
                 <span className="activity-value">
-                  {carbonValue.toFixed(4)} kg CO₂
+                  {displayValue}
                 </span>
               </div>
-              
               <div className="activity-description">
                 {getActivityDescription(activityType)}
               </div>
-              
               <div className="progress-bar">
                 <div 
                   className="progress-fill" 
                   style={{ width: `${percentage}%` }}
                 ></div>
               </div>
-              
               <div className="activity-percentage">
                 {percentage.toFixed(1)}% of total
               </div>
@@ -78,7 +78,9 @@ const ActivityBreakdown = ({ carbonBreakdown }) => {
       </div>
       
       <div className="breakdown-summary">
-        <strong>Total: {totalCarbon.toFixed(4)} kg CO₂</strong>
+        <strong>
+          Total: {unit === 'kg' ? totalCarbon.toFixed(4) + ' kg CO₂' : (totalCarbon / TREE_EQUIVALENT_FACTOR).toFixed(2) + ' Trees'}
+        </strong>
       </div>
     </div>
   );

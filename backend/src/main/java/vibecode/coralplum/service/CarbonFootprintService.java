@@ -37,7 +37,8 @@ public class CarbonFootprintService {
                 entry.getDataTransferGB(),
                 entry.getBuildMinutes(),
                 entry.getEmailCount(),
-                entry.getAttachmentSizeMB()
+                entry.getAttachmentSizeMB(),
+                entry.getDigitalStorageMonths()
             );
             entry.setCarbonEmissionKg(carbonEmission);
         }

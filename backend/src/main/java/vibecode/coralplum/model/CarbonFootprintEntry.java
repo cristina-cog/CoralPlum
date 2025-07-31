@@ -22,15 +22,19 @@ public class CarbonFootprintEntry {
     
     @PositiveOrZero
     private Double carbonEmissionKg;
-    
+
     @NotNull
     private LocalDateTime timestamp;
+
+    private Integer digitalStorageMonths;
+
+    @PositiveOrZero
+    private Double computeHours;
     
     private String userId;
     
     // Cloud usage specific fields
     private String cloudProvider;
-    private Double computeHours;
     private Double storageGB;
     private Double dataTransferGB;
     
@@ -47,10 +51,15 @@ public class CarbonFootprintEntry {
     public CarbonFootprintEntry() {}
     
     public CarbonFootprintEntry(ActivityType activityType, String description, 
-                               Double carbonEmissionKg, LocalDateTime timestamp, String userId) {
+                               Double carbonEmissionKg, Double computeHours,
+                               Integer digitalStorageMonths, LocalDateTime timestamp,
+                               String userId) {
+
         this.activityType = activityType;
         this.description = description;
         this.carbonEmissionKg = carbonEmissionKg;
+        this.computeHours = computeHours;
+        this.digitalStorageMonths = digitalStorageMonths;
         this.timestamp = timestamp;
         this.userId = userId;
     }
@@ -70,6 +79,11 @@ public class CarbonFootprintEntry {
     
     public LocalDateTime getTimestamp() { return timestamp; }
     public void setTimestamp(LocalDateTime timestamp) { this.timestamp = timestamp; }
+
+    public Integer getDigitalStorageMonths() { return digitalStorageMonths; }
+    public void setDigitalStorageMonths(Integer digitalStorageMonths) {
+        this.digitalStorageMonths = digitalStorageMonths;
+    }
     
     public String getUserId() { return userId; }
     public void setUserId(String userId) { this.userId = userId; }

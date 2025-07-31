@@ -7,6 +7,8 @@ public enum ActivityType {
     DIGITAL_STORAGE("Digital Storage"),
     VIDEO_STREAMING("Video Streaming"),
     WEB_BROWSING("Web Browsing"),
+    SOCIAL_MEDIA("Social Media"),
+    ONLINE_MEETING("Online Meeting"),
     OTHER("Other Digital Activity");
     
     private final String displayName;

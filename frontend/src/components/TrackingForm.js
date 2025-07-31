@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { carbonAPI } from '../services/api';
+import QuickSummaryButton from './QuickSummaryButton';
 
 const TrackingForm = ({ onEntryAdded }) => {
   const [formData, setFormData] = useState({
@@ -280,6 +281,18 @@ const TrackingForm = ({ onEntryAdded }) => {
           {isSubmitting ? '⏳ Adding...' : '✅ Add Entry'}
         </button>
       </form>
+
+      <div className="summary-generator-section">
+        <h4>📊 Generate Summary</h4>
+        <p>After adding entries, generate a daily summary to track your progress:</p>
+        <QuickSummaryButton 
+          userId={formData.userId} 
+          variant="success"
+          onSummaryGenerated={() => {
+            console.log('Summary generated from tracking form');
+          }}
+        />
+      </div>
     </div>
   );
 };

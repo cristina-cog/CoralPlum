@@ -21,9 +21,16 @@ ChartJS.register(
   Title
 );
 
-const CarbonChart = ({ carbonBreakdown }) => {
+const TREE_EQUIVALENT_FACTOR = 21; // 1 tree absorbs ~21 kg CO₂/year
+
+const CarbonChart = ({ carbonBreakdown, unit, setUnit }) => {
   const activityTypes = Object.keys(carbonBreakdown);
   const carbonValues = Object.values(carbonBreakdown);
+
+  // Convert values if needed
+  const displayValues = unit === 'kg'
+    ? carbonValues
+    : carbonValues.map(val => (val / TREE_EQUIVALENT_FACTOR).toFixed(2));
 
   const pieData = {
     labels: activityTypes.map(type => {
@@ -39,7 +46,7 @@ const CarbonChart = ({ carbonBreakdown }) => {
     }),
     datasets: [
       {
-        data: carbonValues,
+        data: displayValues,
         backgroundColor: [
           '#FF6384',
           '#36A2EB',
@@ -59,8 +66,8 @@ const CarbonChart = ({ carbonBreakdown }) => {
     labels: pieData.labels,
     datasets: [
       {
-        label: 'Carbon Emission (kg CO₂)',
-        data: carbonValues,
+        label: unit === 'kg' ? 'Carbon Emission (kg CO₂)' : 'Equivalent Trees Planted',
+        data: displayValues,
         backgroundColor: 'rgba(54, 162, 235, 0.8)',
         borderColor: 'rgba(54, 162, 235, 1)',
         borderWidth: 1
@@ -68,7 +75,7 @@ const CarbonChart = ({ carbonBreakdown }) => {
     ]
   };
 
-  const chartOptions = {
+  const pieOptions = {
     responsive: true,
     maintainAspectRatio: false,
     plugins: {
@@ -93,15 +100,6 @@ const CarbonChart = ({ carbonBreakdown }) => {
         display: true,
         text: 'Carbon Emissions Comparison'
       }
-    },
-    scales: {
-      y: {
-        beginAtZero: true,
-        title: {
-          display: true,
-          text: 'kg CO₂'
-        }
-      }
     }
   };
 
@@ -116,15 +114,15 @@ const CarbonChart = ({ carbonBreakdown }) => {
 
   return (
     <div className="chart-container">
-      <h3>Carbon Footprint Visualization</h3>
-      
+      <h3>
+        Carbon Footprint Visualization
+      </h3>
       <div className="charts-grid">
         <div className="chart-item">
           <div className="chart-wrapper" style={{ height: '300px' }}>
-            <Pie data={pieData} options={chartOptions} />
+            <Pie data={pieData} options={pieOptions} />
           </div>
         </div>
-        
         <div className="chart-item">
           <div className="chart-wrapper" style={{ height: '300px' }}>
             <Bar data={barData} options={barOptions} />

@@ -1,6 +1,7 @@
 import React from 'react';
 
-const RecentEntries = ({ entries, onRefresh }) => {
+const TREE_EQUIVALENT_FACTOR = 21;
+const RecentEntries = ({ entries, onRefresh, unit }) => {
   const formatDate = (dateString) => {
     const date = new Date(dateString);
     return date.toLocaleDateString() + ' ' + date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
@@ -44,7 +45,9 @@ const RecentEntries = ({ entries, onRefresh }) => {
                 {formatActivityType(entry.activityType)}
               </span>
               <span className="carbon-amount">
-                {entry.carbonEmissionKg.toFixed(4)} kg CO₂
+                {unit === 'kg'
+                  ? entry.carbonEmissionKg.toFixed(4) + ' kg CO₂'
+                  : (entry.carbonEmissionKg / TREE_EQUIVALENT_FACTOR).toFixed(2) + ' Trees'}
               </span>
             </div>
             

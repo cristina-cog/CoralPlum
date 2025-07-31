@@ -2,10 +2,12 @@ import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Dashboard from './components/Dashboard';
 import TrackingForm from './components/TrackingForm';
+import UserSummaries from './components/UserSummaries';
 import './App.css';
 
 function App() {
   const [refreshDashboard, setRefreshDashboard] = useState(0);
+  const userId = 'demo-user'; // In a real app, this would come from authentication
 
   const handleEntryAdded = () => {
     setRefreshDashboard(prev => prev + 1);
@@ -22,6 +24,7 @@ function App() {
             <nav className="app-nav">
               <Link to="/" className="nav-link">📊 Dashboard</Link>
               <Link to="/track" className="nav-link">➕ Track Activity</Link>
+              <Link to="/summaries" className="nav-link">📈 Summaries</Link>
             </nav>
           </div>
         </header>
@@ -35,6 +38,10 @@ function App() {
             <Route 
               path="/track" 
               element={<TrackingForm onEntryAdded={handleEntryAdded} />} 
+            />
+            <Route 
+              path="/summaries" 
+              element={<UserSummaries userId={userId} />} 
             />
           </Routes>
         </main>

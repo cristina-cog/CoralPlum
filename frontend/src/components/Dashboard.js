@@ -3,6 +3,7 @@ import { carbonAPI } from '../services/api';
 import CarbonChart from './CarbonChart';
 import ActivityBreakdown from './ActivityBreakdown';
 import RecentEntries from './RecentEntries';
+import SummaryGenerator from './SummaryGenerator';
 
 const TREE_EQUIVALENT_FACTOR = 21; // 1 tree absorbs ~21 kg CO₂/year
 
@@ -110,6 +111,16 @@ const Dashboard = () => {
 
       <div className="recent-section">
         <RecentEntries entries={recentEntries} onRefresh={fetchDashboardData} unit={unit} />
+      </div>
+
+      <div className="summary-generator-section">
+        <SummaryGenerator 
+          userId={userId} 
+          onSummaryGenerated={() => {
+            // Optionally refresh dashboard data after summary generation
+            console.log('Summary generated successfully');
+          }}
+        />
       </div>
     </div>
   );

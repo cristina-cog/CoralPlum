@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Dashboard from './components/Dashboard';
 import TrackingForm from './components/TrackingForm';
 import UserSummaries from './components/UserSummaries';
+import DateRangeAnalytics from './components/DateRangeAnalytics';
 import './App.css';
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
               <Link to="/" className="nav-link">📊 Dashboard</Link>
               <Link to="/track" className="nav-link">➕ Track Activity</Link>
               <Link to="/summaries" className="nav-link">📈 Summaries</Link>
+              <Link to="/analytics" className="nav-link">📅 Date Analytics</Link>
             </nav>
           </div>
         </header>
@@ -42,6 +44,10 @@ function App() {
             <Route 
               path="/summaries" 
               element={<UserSummaries userId={userId} />} 
+            />
+            <Route 
+              path="/analytics" 
+              element={<DateRangeAnalytics userId={userId} />} 
             />
           </Routes>
         </main>

@@ -11,6 +11,7 @@ const Dashboard = () => {
   const [totalCarbon, setTotalCarbon] = useState(0);
   const [carbonBreakdown, setCarbonBreakdown] = useState({});
   const [recentEntries, setRecentEntries] = useState([]);
+  const [totalEntriesCount, setTotalEntriesCount] = useState(0);
   const [loading, setLoading] = useState(true);
   const [unit, setUnit] = useState('kg'); // 'kg' or 'trees'
   const userId = 'demo-user'; // In a real app, this would come from authentication
@@ -33,6 +34,7 @@ const Dashboard = () => {
       setTotalCarbon(totalResponse.data);
       setCarbonBreakdown(breakdownResponse.data);
       setRecentEntries(entriesResponse.data.slice(0, 5)); // Show only last 5 entries
+      setTotalEntriesCount(entriesResponse.data.length); // Store total count
       
     } catch (error) {
       console.error('Error fetching dashboard data:', error);
@@ -95,7 +97,7 @@ const Dashboard = () => {
 
         <div className="summary-card entries-count">
           <h3>Total Entries</h3>
-          <div className="count">{recentEntries.length}</div>
+          <div className="count">{totalEntriesCount}</div>
         </div>
       </div>
 

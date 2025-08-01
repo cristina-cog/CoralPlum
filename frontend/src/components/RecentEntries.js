@@ -1,4 +1,5 @@
 import React from 'react';
+import { getActivityLabel, getActivityIcon } from '../utils/activityTypeMap';
 
 const TREE_EQUIVALENT_FACTOR = 21;
 const RecentEntries = ({ entries, onRefresh, unit }) => {
@@ -7,17 +8,8 @@ const RecentEntries = ({ entries, onRefresh, unit }) => {
     return date.toLocaleDateString() + ' ' + date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
   };
 
-  const formatActivityType = (type) => {
-    switch(type) {
-      case 'CLOUD_USAGE': return '☁️ Cloud Usage';
-      case 'CICD_USAGE': return '🔧 CI/CD';
-      case 'EMAIL_USAGE': return '📧 Email';
-      case 'DIGITAL_STORAGE': return '💾 Storage';
-      case 'VIDEO_STREAMING': return '📺 Video';
-      case 'WEB_BROWSING': return '🌐 Browsing';
-      default: return `📱 ${type}`;
-    }
-  };
+  // Use centralized mapping for label and icon
+  const formatActivityType = (type) => `${getActivityIcon(type)} ${getActivityLabel(type)}`;
 
   if (entries.length === 0) {
     return (
@@ -41,9 +33,9 @@ const RecentEntries = ({ entries, onRefresh, unit }) => {
         {entries.map(entry => (
           <div key={entry.id} className="entry-item">
             <div className="entry-header">
-              <span className="activity-type">
-                {formatActivityType(entry.activityType)}
-              </span>
+                <span className="activity-type">
+                  {formatActivityType(entry.activityType)}
+                </span>
               <span className="carbon-amount">
                 {unit === 'kg'
                   ? entry.carbonEmissionKg.toFixed(4) + ' kg CO₂'

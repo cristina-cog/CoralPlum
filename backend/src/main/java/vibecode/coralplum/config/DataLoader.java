@@ -87,6 +87,56 @@ public class DataLoader implements CommandLineRunner {
         carbonFootprintService.createEntry(cicdEntry2);
         carbonFootprintService.createEntry(emailEntry1);
         carbonFootprintService.createEntry(emailEntry2);
+
+        // Sample digital storage entry
+        CarbonFootprintEntry storageEntry = new CarbonFootprintEntry();
+        storageEntry.setUserId("demo-user");
+        storageEntry.setActivityType(ActivityType.DIGITAL_STORAGE);
+        storageEntry.setDescription("Long-term file backup");
+        storageEntry.setStorageGB(500.0);
+        storageEntry.setDigitalStorageMonths(12);
+        storageEntry.setTimestamp(LocalDateTime.now().minusDays(3));
+        carbonFootprintService.createEntry(storageEntry);
+        
+        // Sample video streaming entry
+        CarbonFootprintEntry videoEntry = new CarbonFootprintEntry();
+        videoEntry.setUserId("demo-user");
+        videoEntry.setActivityType(ActivityType.VIDEO_STREAMING);
+        videoEntry.setDescription("Team meeting via Zoom");
+        videoEntry.setComputeHours(2.0);
+        videoEntry.setDataTransferGB(5.0);
+        videoEntry.setTimestamp(LocalDateTime.now().minusDays(2));
+        carbonFootprintService.createEntry(videoEntry);
+        
+        // Sample web browsing entry
+        CarbonFootprintEntry webEntry = new CarbonFootprintEntry();
+        webEntry.setUserId("demo-user");
+        webEntry.setActivityType(ActivityType.WEB_BROWSING);
+        webEntry.setDescription("Research and documentation");
+        webEntry.setComputeHours(5.0);
+        webEntry.setDataTransferGB(2.5);
+        webEntry.setTimestamp(LocalDateTime.now().minusDays(1));
+        carbonFootprintService.createEntry(webEntry);
+        
+        // Sample social media entry
+        CarbonFootprintEntry socialEntry = new CarbonFootprintEntry();
+        socialEntry.setUserId("demo-user");
+        socialEntry.setActivityType(ActivityType.SOCIAL_MEDIA);
+        socialEntry.setDescription("Company updates on LinkedIn");
+        socialEntry.setComputeHours(1.5);
+        socialEntry.setDataTransferGB(0.8);
+        socialEntry.setTimestamp(LocalDateTime.now().minusDays(1));
+        carbonFootprintService.createEntry(socialEntry);
+        
+        // Sample online meeting entry
+        CarbonFootprintEntry meetingEntry = new CarbonFootprintEntry();
+        meetingEntry.setUserId("demo-user");
+        meetingEntry.setActivityType(ActivityType.ONLINE_MEETING);
+        meetingEntry.setDescription("Weekly sync via Teams");
+        meetingEntry.setComputeHours(2.0);
+        meetingEntry.setDataTransferGB(3.2);
+        meetingEntry.setTimestamp(LocalDateTime.now());
+        carbonFootprintService.createEntry(meetingEntry);
         
         System.out.println("Sample data loaded successfully!");
     }

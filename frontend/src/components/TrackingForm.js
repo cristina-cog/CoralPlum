@@ -378,7 +378,36 @@ const TrackingForm = ({ onEntryAdded }) => {
             </div>
           </div>
         );
-
+      case 'OTHER':
+        return (
+          <div className="activity-fields">
+            <h4>� Other Activity Details</h4>
+            <div className="form-row">
+              <div className="form-group">
+                <label>Usage Hours</label>
+                <input
+                  type="number"
+                  step="0.1"
+                  name="computeHours"
+                  value={formData.computeHours}
+                  onChange={handleInputChange}
+                  placeholder="e.g., 1.0"
+                />
+              </div>
+              <div className="form-group">
+                <label>Data Used (GB)</label>
+                <input
+                  type="number"
+                  step="0.1"
+                  name="dataTransferGB"
+                  value={formData.dataTransferGB}
+                  onChange={handleInputChange}
+                  placeholder="e.g., 0.5"
+                />
+              </div>
+            </div>
+          </div>
+        );
       default:
         return (
           <div className="activity-fields">

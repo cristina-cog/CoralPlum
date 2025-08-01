@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
+import { getActivityLabel, getActivityIcon } from '../utils/activityTypeMap';
 import { carbonAPI } from '../services/api';
 import SummaryGenerator from './SummaryGenerator';
 
@@ -27,16 +28,8 @@ const UserSummaries = ({ userId, unit = 'kg' }) => {
     fetchUserSummaries();
   }, [fetchUserSummaries]);
 
-  const formatActivityType = (activityType) => {
-    switch (activityType) {
-      case 'CLOUD_USAGE': return '☁️ Cloud Usage';
-      case 'CICD_USAGE': return '🔧 CI/CD';
-      case 'EMAIL_USAGE': return '📧 Email';
-      case 'VIDEO_STREAMING': return '📺 Video Streaming';
-      case 'WEB_BROWSING': return '🌐 Web Browsing';
-      default: return '📊 ' + activityType.replace('_', ' ');
-    }
-  };
+  // Use centralized mapping for label and icon
+  const formatActivityType = (type) => `${getActivityIcon(type)} ${getActivityLabel(type)}`;
 
   const formatCarbonAmount = (carbonKg) => {
     if (unit === 'kg') {

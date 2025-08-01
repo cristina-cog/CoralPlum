@@ -41,6 +41,9 @@ const CarbonChart = ({ carbonBreakdown, unit, setUnit }) => {
         case 'DIGITAL_STORAGE': return 'Storage';
         case 'VIDEO_STREAMING': return 'Video';
         case 'WEB_BROWSING': return 'Browsing';
+        case 'SOCIAL_MEDIA': return 'Social Media';
+        case 'ONLINE_MEETING': return 'Online Meeting';
+        case 'OTHER': return 'Other';
         default: return type;
       }
     }),
@@ -48,13 +51,15 @@ const CarbonChart = ({ carbonBreakdown, unit, setUnit }) => {
       {
         data: displayValues,
         backgroundColor: [
-          '#FF6384',
-          '#36A2EB',
-          '#FFCE56',
-          '#4BC0C0',
-          '#9966FF',
-          '#FF9F40',
-          '#FF6384'
+          '#FF6384', // Cloud Usage
+          '#36A2EB', // CI/CD
+          '#FFCE56', // Email
+          '#4BC0C0', // Storage
+          '#9966FF', // Video
+          '#FF9F40', // Browsing
+          '#00C49A', // Social Media
+          '#FF6F61', // Online Meeting
+          '#BDBDBD'  // Other
         ],
         borderWidth: 2,
         borderColor: '#fff'

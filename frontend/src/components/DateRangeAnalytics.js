@@ -1,4 +1,5 @@
 import React, { useState, useCallback } from 'react';
+import { getActivityLabel, getActivityIcon } from '../utils/activityTypeMap';
 import { carbonAPI } from '../services/api';
 import { createDateRange } from '../utils/dateUtils';
 
@@ -21,16 +22,8 @@ const DateRangeAnalytics = ({ userId }) => {
     }
   };
 
-  const formatActivityType = (activityType) => {
-    switch (activityType) {
-      case 'CLOUD_USAGE': return '☁️ Cloud Usage';
-      case 'CICD_USAGE': return '🔧 CI/CD';
-      case 'EMAIL_USAGE': return '📧 Email';
-      case 'VIDEO_STREAMING': return '📺 Video Streaming';
-      case 'WEB_BROWSING': return '🌐 Web Browsing';
-      default: return '📊 ' + activityType.replace('_', ' ');
-    }
-  };
+  // Use centralized mapping for label and icon
+  const formatActivityType = (type) => `${getActivityIcon(type)} ${getActivityLabel(type)}`;
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
@@ -243,9 +236,9 @@ const DateRangeAnalytics = ({ userId }) => {
                 {entries.map(entry => (
                   <div key={entry.id} className="entry-item">
                     <div className="entry-header">
-                      <span className="activity-type">
-                        {formatActivityType(entry.activityType)}
-                      </span>
+                        <span className="activity-type">
+                          {formatActivityType(entry.activityType)}
+                        </span>
                       <span className="carbon-amount">
                         {formatCarbonAmount(entry.carbonEmissionKg)}
                       </span>

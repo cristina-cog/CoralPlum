@@ -312,11 +312,62 @@ cd backend
 mvn test
 ```
 
-### Frontend Testing
+### Frontend Unit Testing
 ```bash
 cd frontend
 npm test
 ```
+
+### Cypress E2E Testing
+End-to-end tests are located in `frontend/cypress/e2e/` (or `cypress/e2e/` depending on your setup).
+
+#### Setup Cypress
+```bash
+cd frontend
+npm install cypress --save-dev
+```
+#### Run Cypress Tests
+To run Cypress interactively:
+```bash
+npx cypress open
+```
+Select your test (e.g., `dashboard_total_carbon.cy.js`) in the Cypress UI and run it.
+
+To run all Cypress tests headless:
+```bash
+npx cypress run
+```
+
+**Sample E2E Test:**
+Checks that the total carbon footprint displayed on the Dashboard matches the backend value for the user.
+
+### Playwright E2E Testing
+End-to-end tests using Playwright are located in `frontend/tests/` (or your chosen Playwright test folder).
+
+#### Setup Playwright
+```bash
+cd frontend
+npm install --save-dev @playwright/test
+npx playwright install
+```
+
+#### Run Playwright Tests
+To run all Playwright tests:
+```bash
+npx playwright test
+```
+To run a specific test:
+```bash
+npx playwright test playwright/dashboard_total_carbon.spec.js
+```
+To run tests interactively in the Playwright UI:
+```bash
+npx playwright test --ui
+```
+
+**Sample Playwright Test:**
+Checks that the total carbon footprint displayed on the Dashboard matches the backend value for the user.
+See `frontend/tests/dashboard_total_carbon.spec.js` for an example.
 
 ### API Testing with curl
 ```bash

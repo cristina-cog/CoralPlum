@@ -321,12 +321,12 @@ npm test
 ### Cypress E2E Testing
 End-to-end tests are located in `frontend/cypress/e2e/` (or `cypress/e2e/` depending on your setup).
 
-#### Setup Cypress
+**Setup Cypress**
 ```bash
 cd frontend
 npm install cypress --save-dev
 ```
-#### Run Cypress Tests
+**Run Cypress Tests**
 To run Cypress interactively:
 ```bash
 npx cypress open
@@ -344,14 +344,14 @@ Checks that the total carbon footprint displayed on the Dashboard matches the ba
 ### Playwright E2E Testing
 End-to-end tests using Playwright are located in `frontend/tests/` (or your chosen Playwright test folder).
 
-#### Setup Playwright
+**Setup Playwright**
 ```bash
 cd frontend
 npm install --save-dev @playwright/test
 npx playwright install
 ```
 
-#### Run Playwright Tests
+**Run Playwright Tests**
 To run all Playwright tests:
 ```bash
 npx playwright test

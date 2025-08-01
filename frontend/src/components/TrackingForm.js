@@ -18,7 +18,9 @@ const TrackingForm = ({ onEntryAdded }) => {
     projectName: '',
     // Email fields
     emailCount: '',
-    attachmentSizeMB: ''
+    attachmentSizeMB: '',
+    // Digital storage fields
+    digitalStorageMonths: ''
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -47,7 +49,8 @@ const TrackingForm = ({ onEntryAdded }) => {
         dataTransferGB: formData.dataTransferGB ? parseFloat(formData.dataTransferGB) : null,
         buildMinutes: formData.buildMinutes ? parseInt(formData.buildMinutes) : null,
         emailCount: formData.emailCount ? parseInt(formData.emailCount) : null,
-        attachmentSizeMB: formData.attachmentSizeMB ? parseFloat(formData.attachmentSizeMB) : null
+        attachmentSizeMB: formData.attachmentSizeMB ? parseFloat(formData.attachmentSizeMB) : null,
+        digitalStorageMonths: formData.digitalStorageMonths ? parseInt(formData.digitalStorageMonths) : null
       };
 
       await carbonAPI.createEntry(entryData);
@@ -67,7 +70,8 @@ const TrackingForm = ({ onEntryAdded }) => {
         buildMinutes: '',
         projectName: '',
         emailCount: '',
-        attachmentSizeMB: ''
+        attachmentSizeMB: '',
+        digitalStorageMonths: ''
       });
 
       if (onEntryAdded) {
@@ -221,10 +225,177 @@ const TrackingForm = ({ onEntryAdded }) => {
           </div>
         );
 
+      case 'DIGITAL_STORAGE':
+        return (
+          <div className="activity-fields">
+            <h4>💾 Digital Storage Details</h4>
+            <div className="form-row">
+              <div className="form-group">
+                <label>Storage Duration (Months)</label>
+                <input
+                  type="number"
+                  name="digitalStorageMonths"
+                  value={formData.digitalStorageMonths}
+                  onChange={handleInputChange}
+                  placeholder="e.g., 12"
+                />
+              </div>
+              <div className="form-group">
+                <label>Storage Size (GB)</label>
+                <input
+                  type="number"
+                  step="0.1"
+                  name="storageGB"
+                  value={formData.storageGB}
+                  onChange={handleInputChange}
+                  placeholder="e.g., 500"
+                />
+              </div>
+            </div>
+          </div>
+        );
+
+      case 'VIDEO_STREAMING':
+        return (
+          <div className="activity-fields">
+            <h4>📺 Video Streaming Details</h4>
+            <div className="form-row">
+              <div className="form-group">
+                <label>Streaming Hours</label>
+                <input
+                  type="number"
+                  step="0.1"
+                  name="computeHours"
+                  value={formData.computeHours}
+                  onChange={handleInputChange}
+                  placeholder="e.g., 2.5"
+                />
+              </div>
+              <div className="form-group">
+                <label>Data Used (GB)</label>
+                <input
+                  type="number"
+                  step="0.1"
+                  name="dataTransferGB"
+                  value={formData.dataTransferGB}
+                  onChange={handleInputChange}
+                  placeholder="e.g., 5.2"
+                />
+              </div>
+            </div>
+          </div>
+        );
+
+      case 'WEB_BROWSING':
+        return (
+          <div className="activity-fields">
+            <h4>🌐 Web Browsing Details</h4>
+            <div className="form-row">
+              <div className="form-group">
+                <label>Browsing Hours</label>
+                <input
+                  type="number"
+                  step="0.1"
+                  name="computeHours"
+                  value={formData.computeHours}
+                  onChange={handleInputChange}
+                  placeholder="e.g., 3.0"
+                />
+              </div>
+              <div className="form-group">
+                <label>Data Used (GB)</label>
+                <input
+                  type="number"
+                  step="0.1"
+                  name="dataTransferGB"
+                  value={formData.dataTransferGB}
+                  onChange={handleInputChange}
+                  placeholder="e.g., 1.5"
+                />
+              </div>
+            </div>
+          </div>
+        );
+
+      case 'SOCIAL_MEDIA':
+        return (
+          <div className="activity-fields">
+            <h4>📱 Social Media Details</h4>
+            <div className="form-row">
+              <div className="form-group">
+                <label>Usage Hours</label>
+                <input
+                  type="number"
+                  step="0.1"
+                  name="computeHours"
+                  value={formData.computeHours}
+                  onChange={handleInputChange}
+                  placeholder="e.g., 1.5"
+                />
+              </div>
+              <div className="form-group">
+                <label>Data Used (GB)</label>
+                <input
+                  type="number"
+                  step="0.1"
+                  name="dataTransferGB"
+                  value={formData.dataTransferGB}
+                  onChange={handleInputChange}
+                  placeholder="e.g., 0.8"
+                />
+              </div>
+            </div>
+          </div>
+        );
+
+      case 'ONLINE_MEETING':
+        return (
+          <div className="activity-fields">
+            <h4>📹 Online Meeting Details</h4>
+            <div className="form-row">
+              <div className="form-group">
+                <label>Meeting Hours</label>
+                <input
+                  type="number"
+                  step="0.1"
+                  name="computeHours"
+                  value={formData.computeHours}
+                  onChange={handleInputChange}
+                  placeholder="e.g., 2.0"
+                />
+              </div>
+              <div className="form-group">
+                <label>Data Used (GB)</label>
+                <input
+                  type="number"
+                  step="0.1"
+                  name="dataTransferGB"
+                  value={formData.dataTransferGB}
+                  onChange={handleInputChange}
+                  placeholder="e.g., 3.2"
+                />
+              </div>
+            </div>
+          </div>
+        );
+
       default:
         return (
           <div className="activity-fields">
-            <p>Select an activity type to see specific fields.</p>
+            <h4>📱 General Activity Details</h4>
+            <div className="form-row">
+              <div className="form-group">
+                <label>Usage Hours</label>
+                <input
+                  type="number"
+                  step="0.1"
+                  name="computeHours"
+                  value={formData.computeHours}
+                  onChange={handleInputChange}
+                  placeholder="e.g., 1.0"
+                />
+              </div>
+            </div>
           </div>
         );
     }
@@ -255,6 +426,8 @@ const TrackingForm = ({ onEntryAdded }) => {
             <option value="DIGITAL_STORAGE">💾 Digital Storage</option>
             <option value="VIDEO_STREAMING">📺 Video Streaming</option>
             <option value="WEB_BROWSING">🌐 Web Browsing</option>
+            <option value="SOCIAL_MEDIA">📱 Social Media</option>
+            <option value="ONLINE_MEETING">📹 Online Meeting</option>
             <option value="OTHER">📱 Other</option>
           </select>
         </div>
